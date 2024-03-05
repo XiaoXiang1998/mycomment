@@ -22,10 +22,12 @@ public class UpdateComment extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-				
+		String id = request.getParameter("commentID");
+		String comment = request.getParameter("editComment");
 		CommentBean com=new CommentBean();
-		com.setUserID(Integer.parseInt(request.getParameter("id")));
-		com.setCommentContent(request.getParameter("editComment"));
+		com.setUserID(Integer.parseInt(id));
+		System.out.println(id);
+		com.setCommentContent(comment);
 		new CommentDAO().updateComment(com);
 		
 	    response.sendRedirect("http://localhost:8080/Comment/GetAllComments");

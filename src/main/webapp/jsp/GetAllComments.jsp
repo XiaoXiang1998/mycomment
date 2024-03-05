@@ -32,7 +32,8 @@
 	<td><%=formatDate((com.getCommentTime())) %>
 	<td><%=formatDate(com.getLastmodifiedtime()) %>
 	<td><a href="http://localhost:8080/Comment/DeleteComment?id=<%=com.getUserID()%>">刪除</a>
-	<td><a href="http://localhost:8080/Comment/html/edit_comment.html?id=<%=com.getUserID()%>">修改</a></td>	<% } %>
+	<td><a href="http://localhost:8080/Comment/html/edit_comment.html?id=<%=com.getUserID()%>">修改</a></td>		
+	<% } %>
 	</table>
 	<h3>共<%=coms.size() %>筆評論資料</h3>
 	</div>

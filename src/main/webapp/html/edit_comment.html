@@ -68,11 +68,28 @@
   <form method="post" action="../UpdateComment">
 
     <label for="policyContent">修改評論：</label>
-    <textarea id="policyContent" name="editComment" placeholder="请输入編輯內容" rows="6" required></textarea>
-
+    <textarea id="policyContent" name="editComment" placeholder="请输入編輯內容" rows="6" required></textarea>	
+	<input type="hidden" id="commentID" name="commentID" value="" />
     <input type="submit" value="提交">
   </form>
 </div>
+	<script>
+	 // 从URL中获取'id'参数的值
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, '\\$&');
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
 
+    // 将获取到的参数值设置为隐藏字段的值
+    var commentID = getParameterByName('commentID');
+    if (commentID) {
+        document.getElementById('commentID').value = commentID;
+    }
+</script>
 </body>
 </html>
