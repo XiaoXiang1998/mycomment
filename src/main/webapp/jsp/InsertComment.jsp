@@ -3,8 +3,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%!public String formatDate(long date) {
-	
+<%!public String formatDate(long millis) {
+    Date date = new Date(millis);
+
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
     return sdf.format(date);
 } %>
@@ -29,7 +30,7 @@ table {
 </head>
 <body style='background-color: fdf5e6'>
 	<div align="center" style="margin-top: 20px;">
-		<h2>評論表資料</h2>
+		<h2>成功新增資料</h2>
 		<table border="1">
 			<tr style="background-color: #a8fefa">
 				<th>ID

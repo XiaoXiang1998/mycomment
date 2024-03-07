@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>FORM Text</title>
+
+<link rel="stylesheet" id="templatecss" type="text/css" href="style.css">
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ <style>
+        .bit-com .bit {
+            display: inline-block;
+            width: 32px;
+            height: 24px;
+            background: url(../images/star1.jpg) no-repeat;
+            background-size: 24px 24px;
+        }
+
+        .bit-com .bit.on {
+            background: url(../images/star3.png) no-repeat;
+            background-size: 24px 24px;
+        }
+    </style>
+</head>
+
+<body>
+	<button onclick="redirectToHomepage()" style="margin-bottom: 20px;">返回首頁</button>
+	<form action="../InsertComment" method="post" class="basic-grey" id="commentForm" >
+
+		<h1>
+			Contact Form <span>Please fill all the texts in the fields.</span>
+
+		</h1>
+
+		<label> <span>範本 :</span> <select id="template"
+			name="themplate" onchange="changeStyle();">
+
+				<option value="basic-grey">basic-grey</option>
+
+				<option value="elegant-aero">elegant-aero</option>
+
+				<option value="smart-green">smart-green</option>
+
+				<option value="white-pink">white-pink</option>
+
+				<option value="bootstrap-frm">bootstrap-frm</option>
+
+				<option value="dark-matter">dark-matter</option>
+
+		</select>
+
+		</label> <label> <span>使用者編號 :</span> <input id="name" type="text"
+			name="UserID" placeholder="Your ID" />
+
+		</label> <label> <span>名字 :</span> <input id="name" type="text"
+			name="Username" placeholder="Your Full Name" />
+		
+		</label> <label for="UserType"><span>身分類別：</span></label>
+			<select id="UserType" name="UserType">
+			    <option value="買家" selected>買家</option>
+			    <option value="賣家">賣家</option>
+			</select>	
+ <label> <span>要給的評論 :</span> <textarea id="CommentContent"
+				name="CommentContent" rows="10" cols="30"
+				placeholder="Your Message to Us" required></textarea>
+		<div class="bit-com">
+            <span class="bit"></span>
+            <span class="bit"></span>
+            <span class="bit"></span>
+            <span class="bit"></span>
+            <span class="bit"></span>
+        </div>
+		 服務評價:<input type="hidden" name="rate" id="rate" value="0">
+
+
+		</label> <label> <span>&nbsp;</span> <input type="submit"
+			class="button" value="Send" />
+
+		</label>
+
+	</form>
+
+	<script>
+ 
+                 function changeStyle() {
+ 
+            var template = document.getElementById("template");
+ 
+     		var index = template.selectedIndex;
+ 
+            var templatevalue = template.options[index].value;
+ 
+            var templatecss = document.getElementById("templatecss");
+ 
+			
+ 
+            document.getElementsByTagName("form")[0].setAttribute("class",templatevalue);
+ 
+          }
+                 function redirectToHomepage() {
+                     window.location.href = 'http://localhost:8080/Comment/html/index.html';
+              }
+                 
+                	$(document).ready(function () {
+                	    var rating = 0; // 初始化评分为0
+                	    
+                	    // 鼠标移入星星时确定评分
+                	    $('.bit-com .bit').on('mouseenter', function () {
+                	        $('.bit-com .bit').removeClass('on');
+                	        var index = $(this).index();
+                	        $('.bit-com .bit').slice(0, index + 1).addClass('on');
+                	        rating = index + 1; // 更新评分
+                	        
+
+                	    });
+
+                	    // 当用户提交表单时，移除星星的亮度
+                	    $('#commentForm').on('submit', function () {
+                	        // 将评分值设置到隐藏字段中
+                	        $('#rate').val(rating);
+                	        // 如果评分值在1到5之间，则允许表单提交
+                	         if (rating < 1 || rating > 5) {
+          					 alert('請選擇服務1~5顆星之間的評分值');
+            			return false;
+        			}
+                	        return true;
+                	    });
+                	});
+         </script>
+
+</body>
+
+</html>

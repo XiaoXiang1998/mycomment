@@ -64,9 +64,9 @@ input[type="submit"]:hover {
 </style>
 </head>
 <body>
-	
+
 	<div class="container">
-		<form method="post" action="../UpdateComment">
+		<form method="post" action="../UpdateCommentAll">
 			<input type="hidden" id="commentID" name="commentID"> <input
 				type="hidden" id="lastModifiedTime" name="LastModifiedTime">
 			<label for="policyContent">修改評論：</label>
@@ -76,7 +76,7 @@ input[type="submit"]:hover {
 		</form>
 	</div>
 	<script>
-	
+// 获取 URL 中的参数值的函数
 function getParameterByName(name, url) {
     if (!url) url = window.location.href;
     name = name.replace(/[\[\]]/g, '\\$&');
@@ -87,6 +87,7 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
 
+// 设置隐藏字段的值
 document.getElementById('commentID').value = getParameterByName('id');
 document.getElementById('lastModifiedTime').value = getParameterByName('time');
 $(document).ready(function() {
@@ -115,7 +116,7 @@ $(document).ready(function() {
 
                 // 显示 "Saved!" 消息
                 Swal.fire({
-                    title: "修改成功!",
+                    title: "儲存成功!",
                     icon: "success",
                     timer: null 
                 });
@@ -125,7 +126,6 @@ $(document).ready(function() {
         });
     });
 });
-
 </script>
 </body>
 </html>

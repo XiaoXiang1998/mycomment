@@ -1,102 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
- 
+
 <head>
- 
-    <meta charset="UTF-8">
- 
-         <title>FORM Text</title>
- 
-         <link rel="stylesheet" id="templatecss" type="text/css" href="style.css">
- 
+
+<meta charset="UTF-8">
+
+<title>FORM Text</title>
+
+<link rel="stylesheet" id="templatecss" type="text/css" href="style.css">
+
 </head>
- 
-<body>	
-		<a href="http://localhost:8080/Comment/html/index.html">點我回首頁</a>
-         <form action="../InsertComment" method="post" class="basic-grey">
- 
-                 <h1>Contact Form
- 
-                          <span>Please fill all the texts in the fields.</span>
- 
-                 </h1>
- 
-                 <label>
- 
-                          <span>Themplate :</span>
- 
-                          <select id="template" name="themplate" onchange="changeStyle();">
- 
-                                   <option value="basic-grey">basic-grey</option>
- 
-                                   <option value="elegant-aero">elegant-aero</option>
- 
-                                   <option value="smart-green">smart-green</option>
- 
-                                   <option value="white-pink">white-pink</option>
- 
-                                   <option value="bootstrap-frm">bootstrap-frm</option>
- 
-                                   <option value="dark-matter">dark-matter</option>
- 
-                          </select>
- 
-                 </label>
-                 <label>
- 
-                          <span>Your ID :</span>
- 
-                          <input id="name" type="text" name="UserID" placeholder="Your ID" />
- 
-                 </label>
- 
-                 <label>
- 
-                          <span>Your Name :</span>
- 
-                          <input id="name" type="text" name="Username" placeholder="Your Full Name" />
- 
-                 </label>
- 
-                 <label>
- 
-                          <span>Your UserType :</span>
- 
-                        <input id="UserType" type="text" name="UserType" placeholder="Your Type" />
- 
-                 </label>
- 
- 
- 
-                 <label>
- 
-                          <span>Message :</span>
- 
-                          <textarea id="CommentContent" name="CommentContent" rows="10" cols="30"  placeholder="Your Message to Us"></textarea>
- 
-                 </label>
-                 
-                 <label>
- 
-                          <span>Your rate :</span>
- 
-                          <input id="rate" type="text" name="rate" placeholder="Your rate" />
- 
-                 </label>
- 
-               
- 
-                 <label>
- 
-                          <span>&nbsp;</span>
- 
-                          <input type="submit" class="button" value="Send" />
- 
-                 </label>
- 
-         </form>
- 
-         <script>
+
+<body>
+	<button onclick="redirectToHomepage()" style="margin-bottom: 20px;">返回首頁</button>
+	<form action="../InsertComment" method="post" class="basic-grey">
+
+		<h1>
+			Contact Form <span>Please fill all the texts in the fields.</span>
+
+		</h1>
+
+		<label> <span>範本 :</span> <select id="template"
+			name="themplate" onchange="changeStyle();">
+
+				<option value="basic-grey">basic-grey</option>
+
+				<option value="elegant-aero">elegant-aero</option>
+
+				<option value="smart-green">smart-green</option>
+
+				<option value="white-pink">white-pink</option>
+
+				<option value="bootstrap-frm">bootstrap-frm</option>
+
+				<option value="dark-matter">dark-matter</option>
+
+		</select>
+
+		</label> <label> <span>使用者編號 :</span> <input id="name" type="text"
+			name="UserID" placeholder="Your ID" />
+
+		</label> <label> <span>名字 :</span> <input id="name" type="text"
+			name="Username" placeholder="Your Full Name" />
+
+		</label> <label> <span>身份類型 :</span> <input id="UserType" type="text"
+			name="UserType" placeholder="Your Type" />
+
+		</label> <label> <span>要給的評論 :</span> <textarea id="CommentContent"
+				name="CommentContent" rows="10" cols="30"
+				placeholder="Your Message to Us" required></textarea>
+
+		</label> <label> <span>要給的星數 :</span> <input id="rate" type="text"
+			name="rate" placeholder="Your rate" />
+
+		</label> <label> <span>&nbsp;</span> <input type="submit"
+			class="button" value="Send" />
+
+		</label>
+
+	</form>
+
+	<script>
  
                  function changeStyle() {
  
@@ -113,9 +77,11 @@
             document.getElementsByTagName("form")[0].setAttribute("class",templatevalue);
  
           }
- 
+                 function redirectToHomepage() {
+                     window.location.href = 'http://localhost:8080/Comment/html/index.html';
+                 }
          </script>
- 
+
 </body>
- 
+
 </html>
