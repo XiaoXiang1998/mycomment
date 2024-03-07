@@ -61,19 +61,40 @@ input[type="submit"] {
 input[type="submit"]:hover {
 	background-color: #45a049;
 }
+.button-container {
+    text-align: center;
+    margin-top: 20px; /* 調整上方間距 */
+    margin-bottom: 20px; /* 調整下方間距 */
+}
+
+.button-container button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.button-container button:hover {
+    background-color: #0056b3;
+}
 </style>
 </head>
 <body>
-	
 	<div class="container">
 		<form method="post" action="../UpdateComment">
 			<input type="hidden" id="commentID" name="commentID"> <input
 				type="hidden" id="lastModifiedTime" name="LastModifiedTime">
 			<label for="policyContent">修改評論：</label>
-			<textarea id="policyContent" name="editComment" placeholder="请输入編輯內容"
+			<textarea id="policyContent" name="editComment" placeholder="請輸入新的評論"
 				rows="6" required></textarea>
 			<input type="submit" value="提交">
 		</form>
+		<div class="button-container">
+        <button onclick="redirectToHomepage()">返回上一步</button>
+    	</div>
 	</div>
 	<script>
 	
@@ -89,6 +110,13 @@ function getParameterByName(name, url) {
 
 document.getElementById('commentID').value = getParameterByName('id');
 document.getElementById('lastModifiedTime').value = getParameterByName('time');
+
+function redirectToHomepage() {
+    var userID = getParameterByName('id'); // 從URL獲取用戶ID，您可以根據實際情況修改此處的代碼
+    var redirectURL = 'http://localhost:8080/Comment/GetCommentByID?userID=' + userID;
+    window.location.href = redirectURL;
+}
+
 $(document).ready(function() {
     $('form').submit(function(e) {
         e.preventDefault(); 

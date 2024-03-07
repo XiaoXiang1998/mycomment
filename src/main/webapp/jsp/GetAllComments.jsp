@@ -18,9 +18,16 @@
 <title>評論資料</title>
  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
- 
+ <style>		
+ 	 #backButton {
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 20px;
+    }
+ </style>
 </head>
 <body style='background-color: fdf5e6'>
+<button onclick="redirectToHomepage()" id="backButton">返回首頁</button>
 	<div align="center">
 		<h2>評論表資料</h2>
 		<table border="1"  id="table_id">
@@ -65,7 +72,7 @@
 		<h3>
 			共<%=coms.size()%>筆評論資料
 		</h3>
-		<button onclick="redirectToHomepage()" style="margin-bottom: 20px;">返回首頁</button>
+		
 	</div>
 	<script>
 		

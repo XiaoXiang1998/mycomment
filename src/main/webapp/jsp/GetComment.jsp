@@ -18,6 +18,7 @@
 <style>
 button {
 	margin-bottom: 20px;
+    margin-top: 20px; 
 }
 
 table {
@@ -61,7 +62,7 @@ table {
 					class="update">修改</a></td>
 			</tr>
 		</table>
-		<button onclick="redirectToHomepage()" style="margin-bottom: 20px;">返回首頁</button>
+		<button onclick="redirectToHomepage()" >返回首頁</button>
 	</div>
 	<script>
 	$(".delete").on('click', function(e) {

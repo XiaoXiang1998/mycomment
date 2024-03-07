@@ -29,7 +29,7 @@
 
 .list .item .info {
 	flex: 1;
-	border-bottom: 2px dashed #e4e4e4;
+	border-bottom: 3px dashed #e4e4e4;
 	padding-bottom: 10px;
 }
 
@@ -63,8 +63,13 @@
 			<i class="avatar"></i>
 			<div class="info">
 				<p class="name"><%=com.getUsername()  %></p>
-				<p class="text"><%=com.getCommentContent() %></p>
+				<p><%
+					int rate = com.getRate(); // 获取评分值
+					for (int i = 0; i < rate; i++) {
+					%> <img src="http://localhost:8080/Comment/images/star3.png " alt="star" width="20" height="20">
+					<% } %></p>
 				<p class="time"><%=formatDate((com.getCommentTime())) %></p>
+				<p class="text"><%=com.getCommentContent() %></p>
 			</div>
 		</div>
 	</div>

@@ -22,36 +22,21 @@
             background: url(../images/star3.png) no-repeat;
             background-size: 24px 24px;
         }
+        #alter{
+        
+        	text-align:center;
+        }
+        
     </style>
 </head>
 
 <body>
 	<button onclick="redirectToHomepage()" style="margin-bottom: 20px;">返回首頁</button>
 	<form action="../InsertComment" method="post" class="basic-grey" id="commentForm" >
-
-		<h1>
-			Contact Form <span>Please fill all the texts in the fields.</span>
-
+		<h1 id="alter">
+			評論區<span>請發表友善評論!</span>
 		</h1>
-
-		<label> <span>範本 :</span> <select id="template"
-			name="themplate" onchange="changeStyle();">
-
-				<option value="basic-grey">basic-grey</option>
-
-				<option value="elegant-aero">elegant-aero</option>
-
-				<option value="smart-green">smart-green</option>
-
-				<option value="white-pink">white-pink</option>
-
-				<option value="bootstrap-frm">bootstrap-frm</option>
-
-				<option value="dark-matter">dark-matter</option>
-
-		</select>
-
-		</label> <label> <span>使用者編號 :</span> <input id="name" type="text"
+		 <label> <span>使用者編號 :</span> <input id="name" type="text"
 			name="UserID" placeholder="Your ID" />
 
 		</label> <label> <span>名字 :</span> <input id="name" type="text"
@@ -71,34 +56,16 @@
             <span class="bit"></span>
             <span class="bit"></span>
             <span class="bit"></span>
-        </div>
-		 服務評價:<input type="hidden" name="rate" id="rate" value="0">
-
-
+        </div>服務評價:
+		 <input type="hidden" name="rate" id="rate" value="0">
 		</label> <label> <span>&nbsp;</span> <input type="submit"
 			class="button" value="Send" />
-
 		</label>
 
 	</form>
 
 	<script>
  
-                 function changeStyle() {
- 
-            var template = document.getElementById("template");
- 
-     		var index = template.selectedIndex;
- 
-            var templatevalue = template.options[index].value;
- 
-            var templatecss = document.getElementById("templatecss");
- 
-			
- 
-            document.getElementsByTagName("form")[0].setAttribute("class",templatevalue);
- 
-          }
                  function redirectToHomepage() {
                      window.location.href = 'http://localhost:8080/Comment/html/index.html';
               }
