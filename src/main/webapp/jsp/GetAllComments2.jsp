@@ -29,7 +29,7 @@
 
 .list .item .info {
 	flex: 1;
-	border-bottom: 3px dashed #e4e4e4;
+	border-bottom: 3px solid  #e4e4e4;
 	padding-bottom: 10px;
 }
 
