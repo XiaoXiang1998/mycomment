@@ -73,7 +73,7 @@ public class CommentDAO {
 
 		try {
 			conn = DatabaseUtil.getConnection();
-			String sql = "SELECT * FROM Comments";
+			String sql = "SELECT * FROM Comments order by CommentTime desc ";
 			stmt = conn.prepareStatement(sql);
 			rs = stmt.executeQuery();
 
@@ -136,7 +136,42 @@ public class CommentDAO {
 			DatabaseUtil.closeConnection(conn);
 		}
 	}
+	
+	public List<CommentBean> getCommentsByUserInput(String userInput) {
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		List<CommentBean> beans = new ArrayList<>();
 
+		try {
+			conn = DatabaseUtil.getConnection();
+			String sql = "SELECT * FROM Comments WHERE CommentContent LIKE ?";
+			stmt = conn.prepareStatement(sql);
+	        stmt.setString(1, "%" + userInput + "%");
+			rs = stmt.executeQuery();
+
+			while (rs.next()) {
+				CommentBean bean = new CommentBean();
+				bean.setUserID(rs.getInt("userID"));
+				bean.setUsername(rs.getString("Username"));
+				bean.setUserType(rs.getString("UserType"));
+				bean.setCommentContent(rs.getString("CommentContent"));
+				bean.setCommentTime(rs.getTimestamp("CommentTime").getTime());
+				bean.setLastmodifiedtime(rs.getTimestamp("lastmodifiedtime").getTime());
+				bean.setRate(rs.getInt("rate"));
+				beans.add(bean);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DatabaseUtil.closeResultSet(rs);
+			DatabaseUtil.closePreparedStatement(stmt);
+			DatabaseUtil.closeConnection(conn);
+		}
+
+		return beans;
+	}
+	
 	public void ReplyContent (CommentBean com) {
 		String sql = "INSERT INTO Comments(UserID, Username, UserType, ReplyContent, rate ) VALUES (?, ?, ?, ?, ?)";
 		Connection conn = null;
@@ -158,5 +193,33 @@ public class CommentDAO {
 			DatabaseUtil.closeConnection(conn);
 		}
 	}
+	 public boolean isUserIDExists(String userID) {
+	        Connection connection = null;
+	        PreparedStatement statement = null;
+	        ResultSet resultSet = null;
+
+	        try {
+	            connection = DatabaseUtil.getConnection();
+	            
+	            
+	            String sql = "SELECT COUNT(*) FROM Comments WHERE UserID = ?";
+	            statement = connection.prepareStatement(sql);
+	            statement.setString(1, userID);
+	            resultSet = statement.executeQuery();
+	            
+	            if (resultSet.next()) {
+	                int count = resultSet.getInt(1);
+	                return count > 0;
+	            }
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        } finally {
+	            DatabaseUtil.closeConnection(connection);
+	            DatabaseUtil.closePreparedStatement(statement);
+	            DatabaseUtil.closeResultSet(resultSet);
+	        }
+
+	        return false;
+	    }
 
 }

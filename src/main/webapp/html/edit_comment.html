@@ -141,14 +141,13 @@ $(document).ready(function() {
                     $(this).unbind('submit').submit(); 
                 }, 2000); 
 
-                // 显示 "Saved!" 消息
                 Swal.fire({
                     title: "修改成功!",
                     icon: "success",
                     timer: null 
                 });
             } else if (result.isDenied) {
-                Swal.fire("Changes are not saved", "", "info");
+                Swal.fire("更改未保存", "", "info");
             }
         });
     });

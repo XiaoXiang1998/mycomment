@@ -23,7 +23,7 @@ public class UpdateCommentAll extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String id = request.getParameter("commentID");
-		String comment = request.getParameter("editComment");
+		  String comment = request.getParameter("editComment");
 		CommentBean com = new CommentBean();
 		long lastModifiedTime = System.currentTimeMillis();
 		com.setCommentContent(comment);

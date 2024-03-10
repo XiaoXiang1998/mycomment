@@ -63,8 +63,8 @@ input[type="submit"]:hover {
 }
 .button-container {
     text-align: center;
-    margin-top: 20px; /* 調整上方間距 */
-    margin-bottom: 20px; /* 調整下方間距 */
+    margin-top: 20px;
+    margin-bottom: 20px; 
 }
 
 .button-container button {
@@ -145,7 +145,7 @@ $(document).ready(function() {
                     timer: null 
                 });
             } else if (result.isDenied) {
-                Swal.fire("Changes are not saved", "", "info");
+                Swal.fire("更改未保存", "", "info");
             }
         });
     });

@@ -51,6 +51,21 @@ input[type="submit"] {
 input[type="submit"]:hover {
 	background-color: #0056b3;
 }
+.backButton {
+	background-color: #ccc;
+	color: #333;
+	border: none;
+	padding: 10px 20px;
+	font-size: 16px;
+	border-radius: 5px;
+	cursor: pointer;
+	margin-top: 20px;
+	transition: background-color 0.3s;
+}
+
+.backButton:hover {
+	background-color: #999;
+}
 </style>
 </head>
 <body>
@@ -60,6 +75,12 @@ input[type="submit"]:hover {
 			<input type="text" name="userID" placeholder="請輸入使用者ID" required>
 			<input type="submit" value="提交">
 		</form>
+				<button onclick="redirectToHomepage()" class="backButton">返回首頁</button>
 	</div>
+	<script>
+		function redirectToHomepage() {
+			window.location.href = 'http://localhost:8080/Comment/html/index.html';
+		}
+	</script>
 </body>
 </html>

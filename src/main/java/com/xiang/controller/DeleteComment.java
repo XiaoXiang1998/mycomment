@@ -28,7 +28,7 @@ public class DeleteComment extends HttpServlet {
 			new CommentDAO().deleteComment(id);
 		}
 
-		response.sendRedirect("http://localhost:8080/Comment/GetAllComments");
+		response.sendRedirect("http://localhost:8080/Comment/GetCommentByID?userID="+commentId);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
